@@ -21,9 +21,9 @@ module.exports = (req, res, next) => {
         data: {
           token: fakeToken,
           userInfo: {
-            id: 1,
-            username: 'admin',
-            email: 'admin@example.com'
+            id: user.id,
+            username: user.username,
+            name: user.name,
           }
         },
   success: true
@@ -62,12 +62,7 @@ module.exports = (req, res, next) => {
     db.users.push(newUser);
     fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf8');
     return res.status(201).json({
-      data: {
-        id: newUser.id,
-        username: newUser.username,
-        name: newUser.name,
-        role: newUser.role
-      },
+      message: '注册成功',
       success: true
     });
   }

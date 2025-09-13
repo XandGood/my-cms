@@ -9,4 +9,13 @@ const removeToken = () => {
   localStorage.removeItem('token');
 }
 
-export { setToken, getToken, removeToken };
+const setUserInfo = (userInfo) => {
+  localStorage.setItem('userInfo', JSON.stringify(userInfo));
+}
+const getUserInfo = () => {
+  return JSON.parse(localStorage.getItem('userInfo'));
+}
+const removeUserInfo = () => {
+  localStorage.removeItem('userInfo');
+}
+export { setToken, getToken, removeToken , setUserInfo, getUserInfo, removeUserInfo};

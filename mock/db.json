@@ -13,6 +13,13 @@
       "password": "123456",
       "name": "内容编辑",
       "role": "editor"
+    },
+    {
+      "id": 3,
+      "username": "QYing",
+      "password": "123456",
+      "name": "qy",
+      "role": "user"
     }
   ],
   "articles": [

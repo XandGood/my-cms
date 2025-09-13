@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
   if (authStore.isLogin) {
     next()
   } else {
-    next('/login')
+    next('auth/login')
   }
 })
 

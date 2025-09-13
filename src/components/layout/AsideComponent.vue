@@ -1,0 +1,110 @@
+<template>
+  <el-menu
+    :default-active="activeMenu"
+    class="el-menu-vertical-demo"
+    :collapse="isCollapsed"
+    background-color="rgba(129, 121, 121, 0.587)"
+    text-color="#fff"
+    active-text-color="#ffd04b"
+    :unique-opened="true"
+    :collapse-transition="true"
+    style="backdrop-filter: blur(10px); "
+  >
+    <div class="toggle-button" @click="toggleSidebar" style="border-top-right-radius:10px">
+      <el-icon :size="20">
+        <Fold v-if="isCollapsed" />
+        <Expand v-else />
+      </el-icon>
+    </div>
+    
+    <el-menu-item index="/">
+      <el-icon><HomeFilled /></el-icon>
+       <span>首页</span>
+    </el-menu-item>
+    
+    <el-menu-item index="/dashboard">
+      <el-icon><Monitor /></el-icon>
+      <span>控制台</span>
+    </el-menu-item>
+    
+    <el-sub-menu index="1">
+      <template #title>
+        <el-icon><Setting /></el-icon>
+        <span>系统设置</span>
+      </template>
+      <el-menu-item index="/settings">基本设置</el-menu-item>
+      <el-menu-item index="/settings/advanced">高级设置</el-menu-item>
+    </el-sub-menu>
+    
+    <el-menu-item index="/profile">
+      <el-icon><User /></el-icon>
+      <span>个人资料</span>
+    </el-menu-item>
+  </el-menu>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { Expand, Fold, HomeFilled, Monitor, Setting, User } from '@element-plus/icons-vue'
+
+const route = useRoute()
+const isCollapsed = ref(false)
+const emit = defineEmits(['toggle'])
+
+// 当前激活的菜单项
+const activeMenu = computed(() => route.path)
+
+
+const toggleSidebar = () => {
+  isCollapsed.value = !isCollapsed.value
+  emit('toggle', isCollapsed.value)
+}
+
+</script>
+
+<style scoped>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 170px;
+}
+
+.toggle-button {
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(129, 121, 121, 0.587);
+}
+
+.toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.el-menu {
+  position: fixed; 
+  top: 50%; 
+  transform: translateY(-55%); 
+  left: 0; 
+  height: 60vh; 
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius:10px;
+}
+
+.el-menu-item, .el-sub-menu__title {
+  height: 56px;
+  line-height: 56px;
+}
+
+.el-menu-item:hover, .el-sub-menu__title:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.el-menu-item.is-active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+
+</style>

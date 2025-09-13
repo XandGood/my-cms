@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import { login as loginApi, logout as logoutApi } from '@/api/auth'
-import { setToken, getToken, removeToken } from '@/utils/storage'
+import { setToken, getToken, removeToken , setUserInfo, removeUserInfo ,getUserInfo} from '@/utils/storage'
 import { register } from '../../api/auth'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: getToken() || '',
-    userInfo: null
+    userInfo: getUserInfo() || null
   }),
   getters: {
     isLogin() {
@@ -22,6 +22,7 @@ export const useAuthStore = defineStore('auth', {
         this.userInfo = userInfo
         
         setToken(token)
+        setUserInfo(userInfo)
         return userInfo
       
     },
@@ -29,6 +30,7 @@ export const useAuthStore = defineStore('auth', {
       this.token = ''
       this.userInfo = null
       removeToken()
+       removeUserInfo() 
       logoutApi()
     },
     async register(userData) {
@@ -38,6 +40,6 @@ export const useAuthStore = defineStore('auth', {
       }else{
         return '注册成功，请登录'
       }
-    }
+    },
   }
 })
