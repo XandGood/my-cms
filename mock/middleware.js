@@ -37,6 +37,42 @@ module.exports = (req, res, next) => {
     }
 }
 
+  // 处理注册请求
+  if (req.method === 'POST' && req.path === '/register') {
+    // 解析请求体中的用户名和密码
+    const { username, password,name, role} = req.body;
+
+    // 检查用户名是否已存在
+    const userExists = db.users.some(u => u.username === username);
+    if (userExists) {
+      return res.status(400).json({
+        message: '用户名已存在',
+        success: false
+      });
+    }
+
+    // 创建新用户
+    const newUser = {
+      id: db.users.length + 1,
+      username,
+      password, 
+      name,
+      role: role || 'user'
+    };
+    db.users.push(newUser);
+    fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf8');
+    return res.status(201).json({
+      data: {
+        id: newUser.id,
+        username: newUser.username,
+        name: newUser.name,
+        role: newUser.role
+      },
+      success: true
+    });
+  }
+
+
   // 添加简单的 Token 验证（排除登录、注册等特定路径）
   if (req.path !== '/login' && req.path !== '/register' && req.path !== '/') {
     // 从请求头中获取 Authorization 字段

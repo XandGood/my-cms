@@ -1,8 +1,18 @@
 export default [
   {
+    path: '/',
+    redirect: '/login' 
+  },
+  {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/LoginPage.vue'),
+    component: () => import('@/views/login/LoginPage.vue'),
+    meta: { requireAuth: false }
+  },
+  {
+    path:'/register',
+    name:'Register',
+    component: () => import('@/views/login/RegisterPage.vue'),
     meta: { requireAuth: false }
   },
     //   {

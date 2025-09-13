@@ -21,3 +21,11 @@ export function getCurrentUser() {
     method: 'get'
   })
 }
+
+export function register(data) {
+  return request({
+    url: '/register',
+    method: 'post',
+    data
+  })
+}
