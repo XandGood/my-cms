@@ -15,31 +15,287 @@
       "role": "editor"
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "QYing",
       "password": "123456",
       "name": "qy",
+      "role": "admin"
+    },
+    {
+      "id": "4",
+      "username": "backend_dev",
+      "password": "123456",
+      "name": "李后端",
+      "role": "editor"
+    },
+    {
+      "id": "5",
+      "username": "db_admin",
+      "password": "123456",
+      "name": "王数据库",
       "role": "user"
+    },
+    {
+      "id": "6",
+      "username": "frontend_dev",
+      "password": "123456",
+      "name": "张前端",
+      "role": "editor"
+    },
+    {
+      "id": "7",
+      "username": "mobile_dev",
+      "password": "123456",
+      "name": "刘移动",
+      "role": "user"
+    },
+    {
+      "id": "8",
+      "username": "ui_designer",
+      "password": "123456",
+      "name": "陈设计",
+      "role": "editor"
+    },
+    {
+      "id": "9",
+      "username": "devops_engineer",
+      "password": "123456",
+      "name": "赵运维",
+      "role": "user"
+    },
+    {
+      "id": "10",
+      "username": "tech_writer",
+      "password": "123456",
+      "name": "孙撰稿",
+      "role": "editor"
     }
   ],
   "articles": [
     {
       "id": "1",
       "title": "Vue3 基础教程",
-      "content": "# Vue3 基础教程\n\n这是一篇关于Vue3的基础教程文章...",
+      "content": "# Vue3 基础教程\n\n这是一篇关于Vue3的基础教程文章，涵盖setup语法糖、响应式API、组件通信等核心知识点，适合前端初学者入门学习。",
       "categoryId": 1,
-      "authorId": 1,
+      "authorId": "1",
       "status": "published",
       "createdAt": "2025-01-10T00:00:00Z"
     },
     {
       "id": "2",
       "title": "Vite构建工具使用指南",
-      "content": "# Vite构建工具使用指南\n\nVite是一个现代化的前端构建工具...",
+      "content": "# Vite构建工具使用指南\n\nVite是一个现代化的前端构建工具，本文详细讲解Vite的安装配置、热更新原理、插件生态及与Vue3、React的集成方案。",
       "categoryId": 2,
-      "authorId": 2,
+      "authorId": "2",
       "status": "published",
       "createdAt": "2025-01-15T00:00:00Z"
+    },
+    {
+      "id": "3",
+      "title": "React 18 新特性详解",
+      "content": "# React 18 新特性详解\n\n本文详细介绍React 18中的自动批处理、并发渲染、Transitions API等核心新特性，结合实际代码示例说明如何在项目中应用。",
+      "categoryId": 3,
+      "authorId": "6",
+      "status": "published",
+      "createdAt": "2024-10-20T14:30:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Spring Boot 3 项目实战教程",
+      "content": "# Spring Boot 3 项目实战教程\n\n从环境搭建到接口开发，再到集成MyBatis-Plus和Spring Security，手把手教你构建一个企业级后端项目。",
+      "categoryId": 4,
+      "authorId": "4",
+      "status": "published",
+      "createdAt": "2024-11-05T09:15:00Z"
+    },
+    {
+      "id": "5",
+      "title": "MySQL 8.0 索引优化技巧",
+      "content": "# MySQL 8.0 索引优化技巧\n\n分析MySQL索引原理，结合慢查询日志案例，讲解聚簇索引、非聚簇索引的设计要点及常见索引失效场景解决方案。",
+      "categoryId": 5,
+      "authorId": "5",
+      "status": "published",
+      "createdAt": "2024-12-12T16:40:00Z"
+    },
+    {
+      "id": "6",
+      "title": "Docker容器化部署实战",
+      "content": "# Docker容器化部署实战\n\n介绍Docker核心概念，演示如何编写Dockerfile、构建镜像、创建容器，以及通过Docker Compose编排多容器应用。",
+      "categoryId": 6,
+      "authorId": "9",
+      "status": "published",
+      "createdAt": "2025-02-28T11:20:00Z"
+    },
+    {
+      "id": "7",
+      "title": "Flutter跨平台应用开发入门",
+      "content": "# Flutter跨平台应用开发入门\n\n从Flutter环境配置开始，讲解Dart语法基础、Widget组件使用、页面路由跳转，最终实现一个简易待办清单APP。",
+      "categoryId": 7,
+      "authorId": "7",
+      "status": "published",
+      "createdAt": "2025-03-18T15:50:00Z"
+    },
+    {
+      "id": "8",
+      "title": "Figma UI设计规范搭建指南",
+      "content": "# Figma UI设计规范搭建指南\n\n详细说明如何在Figma中创建组件库、设置样式系统、配置自动布局，帮助团队统一设计语言，提升协作效率。",
+      "categoryId": 8,
+      "authorId": "8",
+      "status": "published",
+      "createdAt": "2025-04-03T10:05:00Z"
+    },
+    {
+      "id": "9",
+      "title": "2025年前端开发趋势预测",
+      "content": "# 2025年前端开发趋势预测\n\n分析AI辅助开发、跨端框架演进、Server Components等前沿方向，探讨前端工程师未来技能提升重点。",
+      "categoryId": 9,
+      "authorId": "10",
+      "status": "published",
+      "createdAt": "2025-05-15T13:30:00Z"
+    },
+    {
+      "id": "10",
+      "title": "Angular 17 路由守卫实战",
+      "content": "# Angular 17 路由守卫实战\n\n讲解Angular路由守卫的4种类型（CanActivate、CanDeactivate等），结合权限控制场景实现登录拦截、表单未保存提示功能。",
+      "categoryId": 3,
+      "authorId": "6",
+      "status": "published",
+      "createdAt": "2025-06-02T09:45:00Z"
+    },
+    {
+      "id": "11",
+      "title": "Node.js 后端接口性能优化",
+      "content": "# Node.js 后端接口性能优化\n\n从异步编程、内存管理、数据库连接池、缓存策略四个维度，分享Node.js接口性能提升的实战技巧与工具推荐。",
+      "categoryId": 4,
+      "authorId": "4",
+      "status": "published",
+      "createdAt": "2025-06-18T14:20:00Z"
+    },
+    {
+      "id": "12",
+      "title": "MongoDB 文档模型设计最佳实践",
+      "content": "# MongoDB 文档模型设计最佳实践\n\n对比关系型数据库与文档数据库设计差异，讲解嵌入式文档、引用式文档的适用场景，避免常见设计误区。",
+      "categoryId": 5,
+      "authorId": "5",
+      "status": "published",
+      "createdAt": "2025-07-05T11:10:00Z"
+    },
+    {
+      "id": "13",
+      "title": "Jenkins 自动化部署流水线配置",
+      "content": "# Jenkins 自动化部署流水线配置\n\n演示如何通过Jenkinsfile定义CI/CD流水线，实现代码拉取、构建、测试、部署的全流程自动化，支持多环境切换。",
+      "categoryId": 6,
+      "authorId": "9",
+      "status": "published",
+      "createdAt": "2025-07-22T16:35:00Z"
+    },
+    {
+      "id": "14",
+      "title": "React Native 原生模块开发教程",
+      "content": "# React Native 原生模块开发教程\n\n当React Native现有组件无法满足需求时，如何编写iOS（Swift）和Android（Kotlin）原生模块，并与JS层通信。",
+      "categoryId": 7,
+      "authorId": "7",
+      "status": "draft",
+      "createdAt": "2025-08-08T10:50:00Z"
+    },
+    {
+      "id": "15",
+      "title": "Tailwind CSS 自定义主题配置",
+      "content": "# Tailwind CSS 自定义主题配置\n\n讲解如何修改Tailwind默认颜色、字体、间距等配置，创建符合项目风格的自定义主题，以及插件扩展方法。",
+      "categoryId": 8,
+      "authorId": "8",
+      "status": "published",
+      "createdAt": "2025-08-20T15:15:00Z"
+    },
+    {
+      "id": "16",
+      "title": "低代码平台在企业中的应用现状",
+      "content": "# 低代码平台在企业中的应用现状\n\n调研主流低代码平台特性，分析其在内部系统搭建、业务快速迭代中的优势与局限性，给出选型建议。",
+      "categoryId": 9,
+      "authorId": "10",
+      "status": "published",
+      "createdAt": "2025-09-02T13:40:00Z"
+    },
+    {
+      "id": "17",
+      "title": "Vue3 + TypeScript 项目类型定义技巧",
+      "content": "# Vue3 + TypeScript 项目类型定义技巧\n\n解决Vue3组件props、emit、ref、reactive的类型标注问题，提升项目类型安全性与开发体验。",
+      "categoryId": 3,
+      "authorId": "6",
+      "status": "pending",
+      "createdAt": "2025-09-08T09:25:00Z"
+    },
+    {
+      "id": "18",
+      "title": "Spring Cloud Alibaba 微服务架构搭建",
+      "content": "# Spring Cloud Alibaba 微服务架构搭建\n\n集成Nacos服务注册发现、Sentinel流量控制、Seata分布式事务，构建高可用微服务体系。",
+      "categoryId": 4,
+      "authorId": "4",
+      "status": "published",
+      "createdAt": "2024-09-15T14:50:00Z"
+    },
+    {
+      "id": "19",
+      "title": "Redis 缓存穿透与雪崩解决方案",
+      "content": "# Redis 缓存穿透与雪崩解决方案\n\n深入分析缓存穿透、击穿、雪崩的产生原因，提供布隆过滤器、互斥锁、过期时间随机化等实战解决方案。",
+      "categoryId": 5,
+      "authorId": "5",
+      "status": "published",
+      "createdAt": "2024-09-28T11:30:00Z"
+    },
+    {
+      "id": "20",
+      "title": "Kubernetes 集群部署与管理",
+      "content": "# Kubernetes 集群部署与管理\n\n基于kubeadm搭建K8s集群，讲解Pod、Deployment、Service、ConfigMap等核心资源的使用与运维技巧。",
+      "categoryId": 6,
+      "authorId": "9",
+      "status": "draft",
+      "createdAt": "2024-10-05T16:10:00Z"
+    },
+    {
+      "id": "21",
+      "title": "Flutter 状态管理方案对比（Provider vs Bloc）",
+      "content": "# Flutter 状态管理方案对比（Provider vs Bloc）\n\n从使用复杂度、性能、可维护性三个维度对比两种主流状态管理方案，给出不同项目场景的选型建议。",
+      "categoryId": 7,
+      "authorId": "7",
+      "status": "published",
+      "createdAt": "2024-11-12T10:45:00Z"
+    },
+    {
+      "id": "22",
+      "title": "Axure 高保真原型设计实战",
+      "content": "# Axure 高保真原型设计实战\n\n讲解Axure动态面板、交互事件、条件判断的使用，实现带表单验证、页面切换动画的高保真产品原型。",
+      "categoryId": 8,
+      "authorId": "8",
+      "status": "published",
+      "createdAt": "2024-12-03T15:20:00Z"
+    },
+    {
+      "id": "23",
+      "title": "AI代码生成工具（Copilot vs CodeGeeX）对比",
+      "content": "# AI代码生成工具（Copilot vs CodeGeeX）对比\n\n测试两种工具在不同语言（JS/Java/Python）、不同场景（接口开发/算法实现）的生成质量与效率，分析适用场景。",
+      "categoryId": 9,
+      "authorId": "10",
+      "status": "published",
+      "createdAt": "2025-01-20T13:50:00Z"
+    },
+    {
+      "id": "24",
+      "title": "TypeScript 高级类型（泛型/条件类型）实战",
+      "content": "# TypeScript 高级类型（泛型/条件类型）实战\n\n通过封装工具函数、定义复杂数据结构案例，讲解TS泛型、条件类型、映射类型的高级用法，提升类型抽象能力。",
+      "categoryId": 3,
+      "authorId": "6",
+      "status": "pending",
+      "createdAt": "2025-02-15T09:10:00Z"
+    },
+    {
+      "id": "25",
+      "title": "Elasticsearch 全文检索优化实战",
+      "content": "# Elasticsearch 全文检索优化实战\n\n讲解ES索引分片设计、分词器配置、查询语句优化、缓存策略，解决大规模数据检索的性能瓶颈问题。",
+      "categoryId": 5,
+      "authorId": "5",
+      "status": "published",
+      "createdAt": "2025-03-30T16:45:00Z"
     }
   ],
   "categories": [
@@ -50,6 +306,34 @@
     {
       "id": "2",
       "name": "教程指南"
+    },
+    {
+      "id": "3",
+      "name": "前端框架"
+    },
+    {
+      "id": "4",
+      "name": "后端技术"
+    },
+    {
+      "id": "5",
+      "name": "数据库技术"
+    },
+    {
+      "id": "6",
+      "name": "DevOps实践"
+    },
+    {
+      "id": "7",
+      "name": "移动开发"
+    },
+    {
+      "id": "8",
+      "name": "UI/UX设计"
+    },
+    {
+      "id": "9",
+      "name": "行业动态"
     }
   ]
 }

@@ -3,8 +3,8 @@
       <div class="home-container">
         <!-- 欢迎区域 -->
         <div class="welcome-section">
-          <h1>欢迎使用内容管理系统</h1>
-          <p>一个简洁、高效的内容管理解决方案</p>
+          <h1>欢迎使用墨记云博</h1>
+          <p>简洁高效的云端博客系统，让每一段思考都有处安放</p>
         </div>
 
         <!-- 快速操作卡片 -->
@@ -18,12 +18,6 @@
               <el-button type="primary" size="small">开始创建</el-button>
             </div>
             <div class="action-card">
-              <el-icon size="40"><DataLine /></el-icon>
-              <h3>查看统计</h3>
-              <p>了解网站访问和用户数据</p>
-              <el-button type="primary" size="small">查看数据</el-button>
-            </div>
-            <div class="action-card">
               <el-icon size="40"><Setting /></el-icon>
               <h3>系统设置</h3>
               <p>配置系统参数和用户权限</p>
@@ -31,57 +25,108 @@
             </div>
           </div>
         </div>
+        
+        <!-- 近期数据-->
+        <div class="recent-data">
+          <div class="recent-data-header">
+            <h2>近期数据 </h2>           
+          </div>
+          <div class="data-overview">
+            <div class="data-card">
+              <div class="data-value">{{userList.length * 7}}</div>
+              <div class="data-label">用户总量</div>
+            </div>
+            <div class="data-card">
+              <div class="data-value">{{ articlesCount * 58}}</div>
+              <div class="data-label">文章总量</div>
+            </div>
+            <div class="data-card">
+              <div class="data-value">{{recentArticleCount * 27}}</div>
+              <div class="data-label">近期发文数量</div>
+            </div>
+          </div>
+  
+          <!-- 图表容器 -->
+          <div class="chart-container" ref="chartRef"></div>
 
-        <!-- 最近活动 -->
-        <div class="recent-activity">
-          <h2>最近活动</h2>
-          <el-timeline>
-            <el-timeline-item
-              v-for="(activity, index) in activities"
-              :key="index"
-              :timestamp="activity.timestamp"
-              :type="activity.type"
-            >
-              {{ activity.content }}
-            </el-timeline-item>
-          </el-timeline>
+          
+          
         </div>
       </div>
 
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Document, DataLine, Setting } from '@element-plus/icons-vue'
+import { Document,  Setting } from '@element-plus/icons-vue'
+import * as echarts from 'echarts'
+import { computed, onBeforeMount, onMounted, ref} from 'vue'
+import { useUserStore } from '@/store/modules/user'
+import { useArticlesStore } from '@/store/modules/articles'
 
-const activities = ref([
-  {
-    content: '更新了系统设置',
-    timestamp: '2024-01-20 10:30',
-    type: 'primary'
-  },
-  {
-    content: '发布了新文章 "如何使用 CMS 系统"',
-    timestamp: '2024-01-19 15:45',
-    type: 'success'
-  },
-  {
-    content: '添加了新用户 "editor1"',
-    timestamp: '2024-01-18 09:15',
-    type: 'info'
-  },
-  {
-    content: '系统维护完成',
-    timestamp: '2024-01-17 23:00',
-    type: 'warning'
+const userStore = useUserStore()
+const articleStore = useArticlesStore()
+
+const chartRef = ref(null)
+const userList = ref([])
+
+const monthlyCounts = articleStore.monthlyArticleCounts;
+const labels = articleStore.monthLabels;
+const articlesCount = articleStore.totalArticlesCount;
+
+const recentArticleCount = computed(() => {
+  return  monthlyCounts.reduce((sum, count) => sum + count, 0);
+})
+
+onBeforeMount( async () => {
+  userList.value =  await userStore.getUserList()
+  await articleStore.getArticlesLength()
+  await articleStore.getMonthlyArticleCounts()
+})
+
+onMounted(() => {
+  if (chartRef.value) {
+    const chart = echarts.init(chartRef.value)
+    
+    // 图表配置
+    const option = {
+      title: {
+        text: '近期发文趋势'
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        data: labels
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: '发文数量',
+          type: 'line',
+          data: monthlyCounts.map(count => count * 17),
+          smooth: true
+        }
+      ]
+    }
+    
+    // 设置图表配置
+    chart.setOption(option)
+    
+    // 响应式调整
+    window.addEventListener('resize', () => {
+      chart.resize()
+    })
   }
-])
+})
+
+
 </script>
 
 <style scoped>
 .home-container {
-  padding: 85px 20px 40px;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -152,20 +197,70 @@ const activities = ref([
   margin-bottom: 20px;
 }
 
-.recent-activity {
+.recent-data {
   background: white;
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
-.recent-activity h2 {
+.recent-data-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recent-data-header h2 {
   font-size: 1.8em;
   color: #2c3e50;
-  margin-bottom: 20px;
   padding-left: 10px;
   border-left: 4px solid #409EFF;
+  margin: 0; /* 重置margin */
+  margin-right: 10px; /* 添加右边距 */
 }
+
+
+.data-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.data-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  flex: 1;
+  margin: 0 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.data-card:first-child {
+  margin-left: 0;
+}
+
+.data-card:last-child {
+  margin-right: 0;
+}
+
+.data-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #409EFF;
+  margin-bottom: 5px;
+}
+
+.data-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+
 
 /* 响应式调整 */
 @media (max-width: 768px) {
@@ -179,6 +274,18 @@ const activities = ref([
   
   .welcome-section h1 {
     font-size: 1.8em;
+  }
+
+   .data-overview {
+    flex-direction: column;
+  }
+  
+  .data-card {
+    margin: 0 0 10px 0;
+  }
+  
+  .chart-container {
+    height: 250px;
   }
 }
 </style>

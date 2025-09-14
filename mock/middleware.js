@@ -7,6 +7,8 @@ const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
 
 
 module.exports = (req, res, next) => {
+
+
   // 处理登录请求
   if (req.method === 'POST' && req.path === '/login') {
     // 解析请求体中的用户名和密码
@@ -66,6 +68,7 @@ module.exports = (req, res, next) => {
       success: true
     });
   }
+      
 
 
   // 添加简单的 Token 验证（排除登录、注册等特定路径）
@@ -77,6 +80,10 @@ module.exports = (req, res, next) => {
       return res.status(401).json({ message: '未经授权的访问，请提供有效的 Token' });
     }
   }
+
+
+
+
 
   // 继续处理请求
   next();

@@ -1,7 +1,7 @@
 <template>
 
     <el-header class="app-header" :class="{ hidden: isHeaderHidden }">
-      <div class="logo">My Application</div>
+      <div class="logo">墨记云博</div>
       <nav>
         <!-- 导航链接 -->
         <router-link to="/">首页</router-link>
@@ -29,6 +29,7 @@ const userInfo = computed(() => authStore.userInfo)
 
 const logout = () => {
   authStore.logout()
+
 }
 
 
@@ -38,7 +39,7 @@ const logout = () => {
 .app-header {
   height: 65px;
   background-color: rgba(129, 121, 121, 0.587);
-
+  border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   color: white;
   display: flex;

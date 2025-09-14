@@ -5,7 +5,7 @@
     
     <div class="layout-content" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
       <!-- 侧边栏组件 - 除登录注册外的页面包含 -->
-      <AsideComponent @toggle="handleSidebarToggle" />
+      <AsideComponent />
       
       <!-- 页面内容区域 -->
       <el-main class="page-content">
@@ -18,13 +18,7 @@
 <script setup>
 import HeaderComponent from '@/components/layout/HeaderComponent.vue'
 import AsideComponent from '@/components/layout/AsideComponent.vue'
-import { ref } from 'vue'
 
-const isSidebarCollapsed = ref(false)
-
-const handleSidebarToggle = (collapsed) => {
-  isSidebarCollapsed.value = collapsed
-}
 </script>
 
 <style scoped>
@@ -43,15 +37,12 @@ const handleSidebarToggle = (collapsed) => {
 .page-content {
   flex: 1;
   padding: 10px;
-  margin-left: 0px; /* 默认侧边栏宽度 */
-  transition: margin-left 0.3s ease;
   box-sizing: border-box;
-  width: calc(100% - 200px); /* 计算内容区域宽度 */
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 50px 20px 20px 20px;
 }
 
-.sidebar-collapsed .page-content {
-  margin-left: 0px; /* 折叠后侧边栏宽度 */
-}
 
 /* 响应式调整 */
 @media (max-width: 768px) {
@@ -59,11 +50,6 @@ const handleSidebarToggle = (collapsed) => {
     margin-left: 0;
     width: 100%;
     padding: 15px;
-  }
-  
-  .sidebar-collapsed .page-content {
-    margin-left: 0;
-    width: 100%;
   }
 }
 </style>

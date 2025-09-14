@@ -2,7 +2,7 @@
   <el-menu
     :default-active="activeMenu"
     class="el-menu-vertical-demo"
-    :collapse="isCollapsed"
+    :collapse="isCollapsed || isScrolling"
     background-color="rgba(129, 121, 121, 0.587)"
     text-color="#fff"
     active-text-color="#ffd04b"
@@ -12,7 +12,7 @@
   >
     <div class="toggle-button" @click="toggleSidebar" style="border-top-right-radius:10px">
       <el-icon :size="20">
-        <Fold v-if="isCollapsed" />
+        <Fold v-if="isCollapsed || isScrolling" />
         <Expand v-else />
       </el-icon>
     </div>
@@ -47,7 +47,9 @@
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { Expand, Fold, HomeFilled, Monitor, Setting, User } from '@element-plus/icons-vue'
+import { useScrollHide } from '@/composables/useScrollHide'
 
+const { isScrolling } = useScrollHide()
 const route = useRoute()
 const isCollapsed = ref(false)
 const emit = defineEmits(['toggle'])
@@ -58,7 +60,7 @@ const activeMenu = computed(() => route.path)
 
 const toggleSidebar = () => {
   isCollapsed.value = !isCollapsed.value
-  emit('toggle', isCollapsed.value)
+  emit('toggle', isCollapsed.value, isScrolling.value)
 }
 
 </script>
@@ -90,6 +92,7 @@ const toggleSidebar = () => {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   border-top-right-radius: 10px;
   border-bottom-right-radius:10px;
+  z-index: 999;
 }
 
 .el-menu-item, .el-sub-menu__title {
