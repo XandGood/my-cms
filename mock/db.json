@@ -18,7 +18,7 @@
       "id": "3",
       "username": "QYing",
       "password": "123456",
-      "name": "qy",
+      "name": "邱邱邱",
       "role": "admin"
     },
     {
@@ -65,10 +65,45 @@
     },
     {
       "id": "10",
-      "username": "tech_writer",
+      "username": "test_engineer",
       "password": "123456",
-      "name": "孙撰稿",
+      "name": "孙测试",
+      "role": "user"
+    },
+    {
+      "id": "11",
+      "username": "product_manager",
+      "password": "123456",
+      "name": "周产品",
       "role": "editor"
+    },
+    {
+      "id": "12",
+      "username": "data_analyst",
+      "password": "123456",
+      "name": "冯数据",
+      "role": "admin"
+    },
+    {
+      "id": "13",
+      "username": "frontend_intern",
+      "password": "123456",
+      "name": "郑前端助",
+      "role": "editor"
+    },
+    {
+      "id": "14",
+      "username": "devops_assistant",
+      "password": "123456",
+      "name": "吴运维助",
+      "role": "user"
+    },
+    {
+      "id": "15",
+      "username": "bro",
+      "password": "123456",
+      "name": "兄弟",
+      "role": "user"
     }
   ],
   "articles": [

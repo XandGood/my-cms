@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { login as loginApi, logout as logoutApi,register } from '@/api/auth'
+import { getCurrentUser } from '../../api/auth'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -14,11 +15,10 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async login(userData) {
         const response = await loginApi(userData)
-        const { token, userInfo } = response.data
-        
+        const { token , userInfo} = response.data
         this.token = token
-        this.userInfo = userInfo
-        return userInfo
+        await this.getUserInfo(userInfo.id)
+        return response
       
     },
 
@@ -28,6 +28,16 @@ export const useAuthStore = defineStore('auth', {
       logoutApi()
     },
 
+    async getUserInfo(id) {
+      const response = await getCurrentUser(id)
+      this.userInfo = {
+        id: response[0].id,
+        username: response[0].username,
+        role: response[0].role,
+        name: response[0].name,
+      }
+    },
+    
     async register(userData) {
       const response = await register(userData)
       if (response.success===false) {

@@ -26,7 +26,18 @@ export default [
         path: '',
         name: 'Home',
         component: () => import('@/views/home/HomePage.vue'),
+        meta: { requireAuth: false }
+      },
+      {
+        path: '/user',
+        name: 'User',
+        component: () => import('@/views/user/UserPage.vue'),
         meta: { requireAuth: true }
+      },
+      {
+        path: '/post',
+        name: 'Post',
+        component: () => import('@/views/post/PostPage.vue'),
       }
     ]
   }

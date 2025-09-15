@@ -9,6 +9,7 @@
     :unique-opened="true"
     :collapse-transition="true"
     style="backdrop-filter: blur(10px); "
+    router
   >
     <div class="toggle-button" @click="toggleSidebar" style="border-top-right-radius:10px">
       <el-icon :size="20">
@@ -22,11 +23,12 @@
        <span>首页</span>
     </el-menu-item>
     
-    <el-menu-item index="/dashboard">
-      <el-icon><Monitor /></el-icon>
-      <span>控制台</span>
+    <el-menu-item index="/post">
+      <el-icon><Document /></el-icon>
+       <span>文章</span>
     </el-menu-item>
-    
+
+
     <el-sub-menu index="1">
       <template #title>
         <el-icon><Setting /></el-icon>
@@ -40,18 +42,30 @@
       <el-icon><User /></el-icon>
       <span>个人资料</span>
     </el-menu-item>
+
+    <el-menu-item index="/user" v-if="userRole === 'admin'">
+      <el-icon><Monitor /></el-icon>
+      <span>用户管理</span>
+    </el-menu-item>
+    
   </el-menu>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Expand, Fold, HomeFilled, Monitor, Setting, User } from '@element-plus/icons-vue'
+import { Expand, Fold, HomeFilled, Monitor, Setting, User, Document} from '@element-plus/icons-vue'
 import { useScrollHide } from '@/composables/useScrollHide'
+import { useAuthStore } from '@/store/modules/auth'
+
+
+const authStore = useAuthStore()
+const userRole = computed(() => authStore.userInfo?.role || '')
+
 
 const { isScrolling } = useScrollHide()
 const route = useRoute()
-const isCollapsed = ref(false)
+const isCollapsed = ref(true)
 const emit = defineEmits(['toggle'])
 
 // 当前激活的菜单项

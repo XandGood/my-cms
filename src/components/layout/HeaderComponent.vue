@@ -6,7 +6,7 @@
         <!-- 导航链接 -->
         <router-link to="/">首页</router-link>
         <router-link to="/auth/login" v-if="!isLoggedIn">登录</router-link>
-        <router-link v-if="isLoggedIn && authStore.userInfo">{{userInfo.username}}</router-link>
+        <router-link v-if="isLoggedIn && authStore.userInfo">{{userInfo.name}}</router-link>
         <el-button @click="logout" v-if="isLoggedIn">登出</el-button>
       </nav>
     </el-header>

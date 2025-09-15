@@ -24,8 +24,6 @@ module.exports = (req, res, next) => {
           token: fakeToken,
           userInfo: {
             id: user.id,
-            username: user.username,
-            name: user.name,
           }
         },
   success: true
@@ -72,7 +70,7 @@ module.exports = (req, res, next) => {
 
 
   // 添加简单的 Token 验证（排除登录、注册等特定路径）
-  if (req.path !== '/login' && req.path !== '/register' && req.path !== '/') {
+  if (req.path !== '/login' && req.path !== '/register' && req.path !== '/' && req.path !== '/logout') {
     // 从请求头中获取 Authorization 字段
     const authHeader = req.headers.authorization;
     // 简单的 Token 验证逻辑

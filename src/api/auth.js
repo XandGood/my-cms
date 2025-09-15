@@ -15,10 +15,13 @@ export function logout() {
   })
 }
 
-export function getCurrentUser() {
+export function getCurrentUser(id) {
   return request({
-    url: '/users/current',
-    method: 'get'
+    url: `/users`,
+    method: 'get',
+    params: {
+      id
+    }
   })
 }
 

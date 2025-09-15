@@ -1,5 +1,4 @@
 <template>
-
       <div class="home-container">
         <!-- 欢迎区域 -->
         <div class="welcome-section">

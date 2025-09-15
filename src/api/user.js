@@ -7,3 +7,32 @@ export function getUser() {
     method: 'get',
   })
 }
+
+export function updateUser(data) {
+  return request({
+    url: `/users/${data.id}`,
+    method: 'put',
+    data
+  })
+}
+
+export function deleteUser(id) {
+  return request({
+    url: `/users/${id}`,
+    method: 'delete',
+  })
+}
+
+export function getUserByPage(Page, Size) {
+  return request({
+    url: `/users?_page=${Page}&_limit=${Size}`,
+    method: 'get',
+  })
+}
+
+export function searchUser(keyword) {
+  return request({
+    url: `/users?q=${keyword}`,
+    method: 'get',
+  })
+}
