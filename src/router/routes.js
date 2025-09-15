@@ -37,7 +37,7 @@ export default [
       {
         path: '/post',
         name: 'Post',
-        component: () => import('@/views/post/PostPage.vue'),
+        component: () => import('@/views/post/PostList.vue'),
       }
     ]
   }

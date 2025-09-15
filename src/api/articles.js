@@ -18,3 +18,10 @@ export function getArticlesByDateRange(startDate, endDate) {
     }
   })
 }
+
+export function getArticlesByPage(Page, Size) {
+  return request({
+    url: `/articles?_page=${Page}&_limit=${Size}`,
+    method: 'get',
+  })
+}

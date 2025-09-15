@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getArticles , getArticlesByDateRange} from "../../api/articles";
+import { getArticles , getArticlesByDateRange, getArticlesByPage} from "../../api/articles";
 
 export const useArticlesStore = defineStore("articles", {
   state: () => ({
@@ -18,6 +18,11 @@ export const useArticlesStore = defineStore("articles", {
       const endDate = new Date(year, month, 0); // 获取该月的最后一天
   
       const res = await getArticlesByDateRange(startDate, endDate);
+      return res;
+     },
+
+     async getArticlesListByPage( page, limit) {
+      const res = await getArticlesByPage(page, limit);
       return res;
      },
 
@@ -52,6 +57,23 @@ export const useArticlesStore = defineStore("articles", {
         monthlyCounts,
         labels
       };
+    },
+
+    //统计每个分类下文章的数量
+    async getArticleCountsByCategory() {
+      const res = await getArticles();
+      const categories = {};
+      res.forEach((article) => {
+        const categoryId = article.categoryId; // 使用categoryId而不是category
+        if (categories[categoryId]) {
+          categories[categoryId]++;
+        } else {
+          categories[categoryId] = 1;
+        }
+      });
+      
+      // 返回分类ID和对应数量的对象
+      return categories;
     },
 
      async getArticlesLength() {
