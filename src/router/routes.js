@@ -38,6 +38,25 @@ export default [
         path: '/post',
         name: 'Post',
         component: () => import('@/views/post/PostList.vue'),
+        meta: { requireAuth: true }
+      },
+      {
+        path: '/post/handle/:id',
+        name: 'PostHandle',
+        component: () => import('@/views/post/PostHandle.vue'),
+        meta: { requireAuth: true }
+      },
+      {
+        path: '/post/:id',
+        name: 'PostDetail',
+        component: () => import('@/views/post/PostDetail.vue'),
+        meta: { requireAuth: true }
+      },
+      {
+        path:'/profile',
+        name:'Profile',
+        component: () => import('@/views/profile/ProfilePage.vue'),
+        meta: { requireAuth: true }
       }
     ]
   }

@@ -11,7 +11,7 @@
       <div class="left-content">
         <!-- 文章列表 -->
         <div class="article-grid">
-          <div v-for="article in articleList" :key="article.id" class="article-card">
+          <div v-for="article in articleList" :key="article.id" class="article-card" @click="handleViewArticle(article)">
             <div class="article-header">
               <h3 class="article-title">{{ article.title }}</h3>
               <el-tag :type="article.status === 'published' ? 'success' : 'info'" size="small">
@@ -29,8 +29,8 @@
                 <span class="date">{{ formatDate(article.createdAt) }}</span>
               </div>
               <div class="article-actions">
-                <el-button type="primary" link @click="handleEdit(article)">编辑</el-button>
-                <el-button type="danger" link @click="handleDelete(article)">删除</el-button>
+               <el-button v-if="userInfoId === article.authorId" type="primary" link @click.stop="handleEdit(article)">编辑</el-button>
+               <el-button v-if="userInfoId === article.authorId || userRole === 'admin'" type="danger" link @click.stop="handleDelete(article)">删除</el-button>
               </div>
             </div>
           </div>
@@ -47,7 +47,9 @@
           <div class="category-nav">
             <h3>文章分类</h3>
             <el-menu>
-              <el-menu-item v-for="category in categories" :key="category.id">
+              <el-menu-item v-for="category in categories" :key="category.id"
+              :class="{ 'is-active': selectedCategoryId === category.id }"
+              @click="handleCategoryClick(category.id)">
                 {{ category.name }}
                 <span class="category-count">({{ categoryCounts[category.id] || 0 }})</span>
               </el-menu-item>
@@ -60,22 +62,45 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted , computed} from 'vue';
 import { useArticlesStore } from '@/store/modules/articles';
 import { ElMessageBox, ElMessage } from 'element-plus';
 import { useCategoryStore } from '@/store/modules/category';
 import { useWindowInfiniteScroll } from '@/composables/useInfiniteScroll';
+import { useAuthStore } from '@/store/modules/auth';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 // 状态管理
+const authStore = useAuthStore();
 const categoryStore = useCategoryStore();
 const articleStore = useArticlesStore();
 const categories = ref([]);
 const categoryCounts = ref({});
+const userInfoId = computed(() => authStore.userInfo?.id || '')
+const userRole = computed(() => authStore.userInfo?.role || '')
+
+
+const selectedCategoryId = ref(null); // 当前选中的分类ID
+
+// 处理分类点击
+const handleCategoryClick = async (categoryId) => {
+  if (selectedCategoryId.value === categoryId) {
+    selectedCategoryId.value = null; // 点击已选中的分类则取消选择
+  } else {
+    selectedCategoryId.value = categoryId;
+  }
+  reset(); // 重置列表
+};
+
+const handleViewArticle = (article) => {
+  router.push(`/post/${article.id}`)
+}
+
 
 // 定义接口请求函数（根据页码加载数据）
 const fetchArticles = async (page) => {
-  // 实际项目中可传入搜索参数
-  const res = await articleStore.getArticlesListByPage(page, 8);
+  const res = await articleStore.getArticlesListByPage( page,8,selectedCategoryId.value);
   return res;
 };
 
@@ -87,7 +112,8 @@ const {
   reset              // 重置列表（用于搜索）
 } = useWindowInfiniteScroll(fetchArticles, {
   threshold: 150,    // 距离底部150px时触发加载
-  immediate: true    // 初始化时自动加载第一页
+  immediate: true,    // 初始化时自动加载第一页
+  categoryId: selectedCategoryId.value // 传递当前选中的分类ID
 });
 
 // 获取分类相关数据
@@ -108,8 +134,23 @@ const getCategoryName = (categoryId) => {
 };
 
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString();
+  return new Date(date).toLocaleString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
 };
+
+const handleCreate = () => {
+  router.push('/post/handle/new') 
+}
+const handleEdit = (article) => {
+  router.push(`/post/handle/${article.id}`)
+}
 
 
 
@@ -121,7 +162,7 @@ const handleDelete = (row) => {
     type: 'warning'
   }).then(async () => {
     try {
-      await articleStore.deleteArticle(row.id);
+      await articleStore.deleteArticleById(row.id);
       reset(); // 删除后重置列表
       ElMessage.success('删除成功');
     } catch (error) {
@@ -136,9 +177,6 @@ onMounted(async () => {
   await getCategoryCounts();
 });
 
-// 其他未实现的方法（根据实际需求补充）
-// const handleCreate = () => { /* 新建文章逻辑 */ };
-// const handleEdit = (article) => { /* 编辑文章逻辑 */ };
 </script>
 
 <style scoped>
@@ -157,6 +195,10 @@ onMounted(async () => {
   background: linear-gradient(135deg, rgba(146, 126, 126, 0.521) 100%, rgba(187, 161, 161, 0.587) 0%);
   border-radius: 10px;
   backdrop-filter: blur(10px);
+}
+
+.page-header h2 {
+  color: white;
 }
 
 .main-content {
@@ -288,6 +330,12 @@ onMounted(async () => {
 .category-nav .category-count {
   color: #999;
 }
+
+.category-nav .el-menu-item.is-active {
+  color: #409EFF;
+  background-color: #ecf5ff;
+}
+
 
 /* 响应式调整 */
 @media (max-width: 1024px) {

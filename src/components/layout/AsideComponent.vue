@@ -48,13 +48,18 @@
       <span>用户管理</span>
     </el-menu-item>
 
+    <el-menu-item @click="scrollToTop" class="back-to-top">
+      <el-icon><Top /></el-icon>
+      <span>返回顶部</span>
+    </el-menu-item>
+
   </el-menu>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Expand, Fold, HomeFilled, Monitor, Setting, User, Document} from '@element-plus/icons-vue'
+import { Expand, Fold, HomeFilled, Monitor, Setting, User, Document,Top} from '@element-plus/icons-vue'
 import { useScrollHide } from '@/composables/useScrollHide'
 import { useAuthStore } from '@/store/modules/auth'
 
@@ -71,6 +76,13 @@ const emit = defineEmits(['toggle'])
 // 当前激活的菜单项
 const activeMenu = computed(() => route.path)
 
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 
 const toggleSidebar = () => {
   isCollapsed.value = !isCollapsed.value
@@ -108,6 +120,20 @@ const toggleSidebar = () => {
   border-bottom-right-radius:10px;
   z-index: 999;
 }
+
+.back-to-top {
+  position: absolute !important;
+  bottom: 0;
+  width: 100%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.el-menu:not(.el-menu--collapse) .back-to-top {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
 
 .el-menu-item, .el-sub-menu__title {
   height: 56px;

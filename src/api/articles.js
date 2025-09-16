@@ -19,9 +19,47 @@ export function getArticlesByDateRange(startDate, endDate) {
   })
 }
 
-export function getArticlesByPage(Page, Size) {
+export function getArticlesByPage(Page, Size, categoryId) {
+  const params = {
+    _page: Page,
+    _limit: Size
+  };
+  if (categoryId) {
+    params.categoryId = categoryId;
+  }
   return request({
-    url: `/articles?_page=${Page}&_limit=${Size}`,
+    url: '/articles',
     method: 'get',
+    params
+  })
+}
+
+export function addArticle(data) {
+  return request({
+    url: '/articles',
+    method: 'post',
+    data
+  })
+}
+
+export function updateArticle(data) {
+  return request({
+    url: `/articles/${data.id}`,
+    method: 'put',
+    data
+  })
+}
+
+export function deleteArticle(id) {
+  return request({
+    url: `/articles/${id}`,
+    method: 'delete'
+  })
+}
+
+export function getArticleById(id) {
+  return request({
+    url: `/articles/${id}`,
+    method: 'get'
   })
 }

@@ -8,6 +8,13 @@ export function getUser() {
   })
 }
 
+export function getUserById(id) {
+  return request({
+    url: `/users/${id}`,
+    method: 'get',
+  })
+}
+
 export function updateUser(data) {
   return request({
     url: `/users/${data.id}`,

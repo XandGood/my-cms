@@ -5,116 +5,161 @@
       "username": "admin",
       "password": "123456",
       "name": "系统管理员",
-      "role": "admin"
+      "role": "admin",
+      "email": "admin@example.com",
+      "phone": "13800138000",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "2",
       "username": "editor",
       "password": "123456",
       "name": "内容编辑",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "3",
       "username": "QYing",
       "password": "123456",
       "name": "邱邱邱",
-      "role": "admin"
+      "role": "admin",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "4",
       "username": "backend_dev",
       "password": "123456",
       "name": "李后端",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "5",
       "username": "db_admin",
       "password": "123456",
       "name": "王数据库",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "6",
       "username": "frontend_dev",
       "password": "123456",
       "name": "张前端",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "7",
       "username": "mobile_dev",
       "password": "123456",
       "name": "刘移动",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "8",
       "username": "ui_designer",
       "password": "123456",
       "name": "陈设计",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "9",
       "username": "devops_engineer",
       "password": "123456",
       "name": "赵运维",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "10",
       "username": "test_engineer",
       "password": "123456",
       "name": "孙测试",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "11",
       "username": "product_manager",
       "password": "123456",
       "name": "周产品",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "12",
       "username": "data_analyst",
       "password": "123456",
       "name": "冯数据",
-      "role": "admin"
+      "role": "admin",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "13",
       "username": "frontend_intern",
       "password": "123456",
       "name": "郑前端助",
-      "role": "editor"
+      "role": "editor",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "14",
       "username": "devops_assistant",
       "password": "123456",
       "name": "吴运维助",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     },
     {
       "id": "15",
       "username": "bro",
       "password": "123456",
       "name": "兄弟",
-      "role": "user"
+      "role": "user",
+      "email": "",
+      "phone": "",
+      "avatar": "/images/default-avatar.png"
     }
   ],
   "articles": [
     {
       "id": "1",
       "title": "Vue3 基础教程",
-      "content": "# Vue3 基础教程\n\n这是一篇关于Vue3的基础教程文章，涵盖setup语法糖、响应式API、组件通信等核心知识点，适合前端初学者入门学习。",
+      "content": "# Vue3 基础教程\n这是一篇关于Vue3的基础教程文章，涵盖setup语法糖、响应式API、组件通信等核心知识点，适合前端初学者入门学习。\n\n\n## 一、Vue3环境搭建：从0到1准备开发环境\n在学习Vue3核心知识点前，我们需要先搭建基础开发环境。对于初学者来说，有两种简单易上手的方式：\n\n### 1. 快速体验：通过CDN引入\n如果只是想快速尝试Vue3语法，无需复杂配置，直接在HTML文件中通过CDN引入即可，代码如下：\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Vue3 快速体验</title>\n  <!-- 引入Vue3 -->\n  <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"></script>\n</head>\n<body>\n  <!-- Vue挂载容器 -->\n  <div id=\"app\">{{ message }}</div>\n\n  <script>\n    // 创建Vue实例\n    const { createApp } = Vue\n    createApp({\n      data() {\n        return {\n          message: 'Hello Vue3!'\n        }\n      }\n    }).mount('#app')\n  </script>\n</body>\n</html>\n```\n这种方式无需安装任何工具，保存文件后直接用浏览器打开就能看到效果，适合初期语法测试。\n\n### 2. 项目开发：使用Vite创建正式项目\n如果需要开发完整项目，推荐使用Vue官方推荐的构建工具Vite（比传统Vue CLI更快），步骤如下：\n- 首先确保电脑已安装Node.js（建议版本14.18+），打开终端输入`node -v`验证是否安装成功；\n- 执行创建命令：`npm create vite@latest my-vue3-project -- --template vue`（`my-vue3-project`是项目名，可自定义）；\n- 进入项目目录：`cd my-vue3-project`；\n- 安装依赖：`npm install`；\n- 启动项目：`npm run dev`；\n- 打开终端提示的本地地址（如`http://127.0.0.1:5173/`），就能看到Vue3的默认项目页面。\n\n\n## 二、核心语法：setup语法糖——Vue3的“简化神器”\nVue3推出的`setup`语法糖（需在`<script>`标签添加`setup`属性），是简化代码的核心，它让我们无需写`setup()`函数、无需手动导出变量/函数，直接在脚本中编写逻辑即可。\n\n### 1. 基础用法：声明变量与函数\n```vue\n<template>\n  <div>\n    <h2>当前计数：{{ count }}</h2>\n    <button @click=\"addCount\">点击加1</button>\n  </div>\n</template>\n\n<script setup>\n// 直接声明变量（注意：普通变量默认不具备响应式）\nlet count = 0\n\n// 直接声明函数\nconst addCount = () => {\n  count++\n  console.log('当前计数：', count)\n}\n</script>\n```\n这里要注意：普通变量`count`虽然能修改，但修改后页面不会自动更新——因为它没有“响应式”能力，这就需要用到Vue3的响应式API。\n\n\n## 三、响应式API：让数据“动”起来\nVue3通过`ref`和`reactive`两个核心API实现响应式，解决“数据修改后页面不更新”的问题，两者适用场景不同，初学者需重点区分。\n\n### 1. ref：处理基本类型响应式（数字、字符串、布尔值）\n`ref`用于包装基本类型数据，使用时需通过`.value`访问（模板中无需写`.value`，Vue会自动解析）：\n```vue\n<template>\n  <div>\n    <h2>用户名：{{ username }}</h2>\n    <h2>年龄：{{ age }}</h2>\n    <button @click=\"updateInfo\">更新信息</button>\n  </div>\n</template>\n\n<script setup>\n// 从Vue中引入ref\nimport { ref } from 'vue'\n\n// 用ref包装响应式数据\nconst username = ref('小明')\nconst age = ref(18)\n\n// 修改响应式数据（需用.value）\nconst updateInfo = () => {\n  username.value = '小李' // 模板中直接用{{ username }}\n  age.value = 20         // 模板中直接用{{ age }}\n}\n</script>\n```\n\n### 2. reactive：处理对象/数组响应式\n当需要响应式的是对象（如用户信息）或数组（如列表数据）时，推荐用`reactive`，它直接包装复杂数据类型，无需`.value`：\n```vue\n<template>\n  <div>\n    <h2>用户信息</h2>\n    <p>姓名：{{ user.name }}</p>\n    <p>性别：{{ user.gender }}</p>\n    <h3>爱好列表</h3>\n    <ul>\n      <li v-for=\"(hobby, index) in user.hobbies\" :key=\"index\">\n        {{ hobby }}\n      </li>\n    </ul>\n    <button @click=\"updateUser\">更新用户数据</button>\n  </div>\n</template>\n\n<script setup>\nimport { reactive } from 'vue'\n\n// 用reactive包装对象类型响应式数据\nconst user = reactive({\n  name: '小红',\n  gender: '女',\n  hobbies: ['看书', '画画']\n})\n\n// 修改响应式对象（直接修改属性，无需.value）\nconst updateUser = () => {\n  user.name = '小红同学'\n  user.hobbies.push('编程') // 数组方法正常使用\n}\n</script>\n```\n\n### 3. 小技巧：toRef与toRefs——解构响应式对象不丢失响应式\n如果直接解构`reactive`创建的对象，会丢失响应式（比如`const { name } = user`后，修改`name`页面不更新）。这时可以用`toRef`（单个属性）或`toRefs`（多个属性）解决：\n```vue\n<script setup>\nimport { reactive, toRef, toRefs } from 'vue'\n\nconst user = reactive({\n  name: '小刚',\n  age: 22\n})\n\n// 单个属性：toRef(响应式对象, 属性名)\nconst name = toRef(user, 'name')\n\n// 多个属性：toRefs(响应式对象)，返回包含所有属性ref的对象\nconst { age } = toRefs(user)\n\n// 修改时仍需.value（因为是ref类型）\nconst changeInfo = () => {\n  name.value = '小刚同学'\n  age.value = 23\n}\n</script>\n```\n\n\n## 四、组件通信：让组件之间“对话”\nVue3项目是由多个组件组成的，组件之间需要传递数据（通信），常见场景有“父传子”“子传父”“兄弟组件通信”，下面分别讲解最简单的实现方式。\n\n### 1. 父传子：通过props传递数据\n父组件通过自定义属性向子组件传值，子组件通过`defineProps`接收（无需引入，Vue3内置）：\n\n#### 父组件（Parent.vue）\n```vue\n<template>\n  <div>\n    <h2>父组件</h2>\n    <!-- 向子组件传递数据：title（字符串）、isShow（布尔值）、list（数组） -->\n    <Child \n      :title=\"articleTitle\" \n      :is-show=\"isChildShow\" \n      :article-list=\"articleList\"\n    />\n  </div>\n</template>\n\n<script setup>\nimport Child from './Child.vue' // 引入子组件\nimport { ref, reactive } from 'vue'\n\n// 父组件要传递的数据\nconst articleTitle = ref('Vue3基础教程')\nconst isChildShow = ref(true)\nconst articleList = reactive([\n  'setup语法糖',\n  '响应式API',\n  '组件通信'\n])\n</script>\n```\n\n#### 子组件（Child.vue）\n```vue\n<template>\n  <div v-if=\"isShow\" class=\"child-container\">\n    <h3>子组件接收的内容：</h3>\n    <p>文章标题：{{ title }}</p>\n    <p>文章章节：</p>\n    <ul>\n      <li v-for=\"(item, index) in articleList\" :key=\"index\">\n        {{ index + 1 }}. {{ item }}\n      </li>\n    </ul>\n  </div>\n</template>\n\n<script setup>\n// 接收父组件传递的props，可指定类型和默认值\nconst props = defineProps({\n  title: {\n    type: String, // 数据类型\n    required: true // 是否必传\n  },\n  isShow: {\n    type: Boolean,\n    default: false // 默认值\n  },\n  articleList: {\n    type: Array,\n    default: () => [] // 数组默认值需用函数返回（避免复用问题）\n  }\n})\n\n// 使用props：直接用props.属性名，或解构（建议用toRefs保持响应式）\n// import { toRefs } from 'vue'\n// const { title, isShow, articleList } = toRefs(props)\n</script>\n```\n\n### 2. 子传父：通过emit触发事件传递数据\n子组件不能直接修改父组件的数据，需通过`defineEmits`定义事件，在父组件中监听事件并接收数据：\n\n#### 子组件（Child.vue）\n```vue\n<template>\n  <div>\n    <h3>子组件</h3>\n    <input \n      type=\"text\" \n      v-model=\"inputValue\" \n      placeholder=\"输入内容传给父组件\"\n    >\n    <button @click=\"sendToParent\">点击传值</button>\n  </div>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\n\n// 1. 定义可触发的事件（数组形式，元素是事件名）\nconst emit = defineEmits(['sendValue'])\n\n// 子组件的输入数据\nconst inputValue = ref('')\n\n// 2. 触发事件并传递数据：emit(事件名, 要传递的数据)\nconst sendToParent = () => {\n  if (inputValue.value) {\n    emit('sendValue', inputValue.value) // 把输入值传给父组件\n    inputValue.value = '' // 清空输入框\n  }\n}\n</script>\n```\n\n#### 父组件（Parent.vue）\n```vue\n<template>\n  <div>\n    <h2>父组件</h2>\n    <p>子组件传来的值：{{ childValue }}</p>\n    <!-- 3. 监听子组件定义的事件，事件处理函数接收数据 -->\n    <Child @send-value=\"handleChildValue\" />\n  </div>\n</template>\n\n<script setup>\nimport Child from './Child.vue'\nimport { ref } from 'vue'\n\n// 父组件接收子组件数据的变量\nconst childValue = ref('')\n\n// 4. 处理子组件传递的数据\nconst handleChildValue = (value) => {\n  childValue.value = value // 把子组件的数据赋值给父组件变量\n}\n</script>\n```\n\n### 3. 兄弟组件通信：用Pinia简化状态管理\n如果两个组件没有直接的父子关系（比如兄弟组件），推荐用Vue3官方推荐的状态管理工具Pinia（替代Vue2的Vuex），它用法更简单，无需复杂配置：\n\n#### 第一步：安装Pinia\n```bash\nnpm install pinia\n```\n\n#### 第二步：创建Pinia实例（main.js）\n```javascript\n// main.js\nimport { createApp } from 'vue'\nimport { createPinia } from 'pinia' // 引入Pinia\nimport App from './App.vue'\n\nconst app = createApp(App)\napp.use(createPinia()) // 挂载Pinia\napp.mount('#app')\n```\n\n#### 第三步：创建Store（存储共享数据）\n在`src`目录下新建`store`文件夹，创建`counterStore.js`：\n```javascript\n// src/store/counterStore.js\nimport { defineStore } from 'pinia'\n\n// 定义Store：defineStore(唯一标识, 配置对象)\nexport const useCounterStore = defineStore('counter', {\n  // 存储共享数据（类似Vue2的data）\n  state: () => ({\n    count: 0 // 兄弟组件共享的计数\n  }),\n  // 修改数据的方法（类似Vue2的mutations，可直接写同步逻辑）\n  actions: {\n    increment() {\n      this.count++ // 直接修改state中的数据\n    },\n    // 也可以接收参数\n    add(num) {\n      this.count += num\n    }\n  }\n})\n```\n\n#### 第四步：兄弟组件1（Brother1.vue）——修改共享数据\n```vue\n<template>\n  <div>\n    <h3>兄弟组件1</h3>\n    <p>共享计数：{{ counterStore.count }}</p>\n    <button @click=\"counterStore.increment\">点击加1</button>\n    <button @click=\"counterStore.add(5)\">点击加5</button>\n  </div>\n</template>\n\n<script setup>\n// 引入创建的Store\nimport { useCounterStore } from '@/store/counterStore'\n\n// 创建Store实例\nconst counterStore = useCounterStore()\n</script>\n```\n\n#### 第五步：兄弟组件2（Brother2.vue）——读取/修改共享数据\n```vue\n<template>\n  <div>\n    <h3>兄弟组件2</h3>\n    <p>共享计数：{{ counterStore.count }}</p>\n    <button @click=\"counterStore.add(2)\">点击加2</button>\n  </div>\n</template>\n\n<script setup>\nimport { useCounterStore } from '@/store/counterStore'\nconst counterStore = useCounterStore()\n</script>\n```\n此时，无论在哪个兄弟组件修改`count`，另一个组件的`count`都会同步更新——因为它们共享了Pinia中的状态。\n\n\n## 五、入门总结与下一步学习建议\n通过以上内容，我们已经掌握了Vue3的核心基础：\n1. 环境搭建：用CDN快速体验，用Vite创建项目；\n2. setup语法糖：简化代码，无需手动导出；\n3. 响应式API：用`ref`处理基本类型，`reactive`处理复杂类型；\n4. 组件通信：父传子用props，子传父用emit，兄弟组件用Pinia。\n\n对于初学者，建议下一步：\n1. 动手实践：用以上知识点写一个小项目（如待办清单、个人博客首页）；\n2. 学习Vue3的生命周期：了解`onMounted`（组件挂载后）、`onUpdated`（组件更新后）等钩子的用法；\n3. 探索Vue3的其他特性：如`watch`和`watchEffect`（监听数据变化）、`computed`（计算属性）等。\n\nVue3的设计更灵活、性能更优，只要多写多练，很快就能上手开发实际项目！",
       "categoryId": 1,
-      "authorId": "1",
+      "authorId": "3",
       "status": "published",
-      "createdAt": "2025-01-10T00:00:00Z"
+      "createdAt": "2025-09-16T04:48:25Z"
     },
     {
       "id": "2",
@@ -130,7 +175,7 @@
       "title": "React 18 新特性详解",
       "content": "# React 18 新特性详解\n\n本文详细介绍React 18中的自动批处理、并发渲染、Transitions API等核心新特性，结合实际代码示例说明如何在项目中应用。",
       "categoryId": 3,
-      "authorId": "6",
+      "authorId": "3",
       "status": "published",
       "createdAt": "2024-10-20T14:30:00Z"
     },
@@ -331,6 +376,26 @@
       "authorId": "5",
       "status": "published",
       "createdAt": "2025-03-30T16:45:00Z"
+    },
+    {
+      "title": "我想我也许能实现一篇好的文章吗？",
+      "content": "我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章我想我也许能实现一篇好的文章",
+      "categoryId": "1",
+      "authorId": "3",
+      "status": "published",
+      "createAt": "",
+      "createdAt": "2025-09-16T03:17:06Z",
+      "id": "mHBXGB7"
+    },
+    {
+      "title": "这是一篇markdown的test",
+      "content": "## 这是一篇markdown的test\n\n\n\n- **第一是粗体**\n\n- ***第二是斜体+粗体***\n\n- [第三是连接](url)\n\n- 第四是图片![123123](url)\n- 第五是代码块\n```\nimport { onMounted, computed, ref, onUnmounted } from 'vue'\n```",
+      "categoryId": "1",
+      "authorId": "3",
+      "status": "published",
+      "createAt": "",
+      "createdAt": "2025-09-16T04:55:53Z",
+      "id": "9mpuDZ8"
     }
   ],
   "category": [

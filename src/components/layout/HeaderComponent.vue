@@ -7,6 +7,7 @@
         <router-link to="/">首页</router-link>
         <router-link to="/auth/login" v-if="!isLoggedIn">登录</router-link>
         <router-link v-if="isLoggedIn && authStore.userInfo">{{userInfo.name}}</router-link>
+        <img v-if="isLoggedIn && authStore.userInfo" :src="userInfo.avatar" alt="头像" style="width: 30px; height: 30px; border-radius: 50%; margin-left: 10px; margin-bottom: 2px;">
         <el-button @click="logout" v-if="isLoggedIn">登出</el-button>
       </nav>
     </el-header>

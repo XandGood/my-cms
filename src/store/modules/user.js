@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { getUser,  updateUser, deleteUser } from "@/api/user"
-import { getUserByPage, searchUser } from "../../api/user";
+import { getUserById, getUserByPage, searchUser } from "../../api/user";
 
 
 export const useUserStore = defineStore('user',{
@@ -33,6 +33,11 @@ export const useUserStore = defineStore('user',{
       const res = await searchUser(keyword);
       return res;
     },
+
+    async fetchGetUser(id) {
+      const res = await getUserById(id);
+      return res;
+    }
   },
   getters: {
   
