@@ -23,19 +23,14 @@
        <span>首页</span>
     </el-menu-item>
     
-    <el-menu-item index="/post">
-      <el-icon><Document /></el-icon>
-       <span>文章</span>
-    </el-menu-item>
-
 
     <el-sub-menu index="1">
       <template #title>
-        <el-icon><Setting /></el-icon>
-        <span>系统设置</span>
+        <el-icon><Document /></el-icon>
+        <span>文章内容</span>
       </template>
-      <el-menu-item index="/settings">基本设置</el-menu-item>
-      <el-menu-item index="/settings/advanced">高级设置</el-menu-item>
+      <el-menu-item index="/post">文章速递</el-menu-item>
+      <el-menu-item index="/post/handle/new">发布文章</el-menu-item>
     </el-sub-menu>
     
     <el-menu-item index="/profile">
@@ -48,7 +43,7 @@
       <span>用户管理</span>
     </el-menu-item>
 
-    <el-menu-item @click="scrollToTop" class="back-to-top">
+    <el-menu-item @click="scrollToTop" class="back-to-top" index="">
       <el-icon><Top /></el-icon>
       <span>返回顶部</span>
     </el-menu-item>
@@ -59,7 +54,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Expand, Fold, HomeFilled, Monitor, Setting, User, Document,Top} from '@element-plus/icons-vue'
+import { Expand, Fold, HomeFilled, Monitor, User, Document,Top} from '@element-plus/icons-vue'
 import { useScrollHide } from '@/composables/useScrollHide'
 import { useAuthStore } from '@/store/modules/auth'
 

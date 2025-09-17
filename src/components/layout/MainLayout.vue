@@ -3,7 +3,7 @@
     <!-- 头部组件 - 所有页面都包含 -->
     <HeaderComponent />
     
-    <div class="layout-content" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
+    <div class="layout-content">
       <!-- 侧边栏组件 - 除登录注册外的页面包含 -->
       <AsideComponent />
       

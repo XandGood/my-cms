@@ -8,7 +8,8 @@
       "role": "admin",
       "email": "admin@example.com",
       "phone": "13800138000",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "2",
@@ -18,17 +19,19 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "3",
       "username": "QYing",
       "password": "123456",
-      "name": "邱邱邱",
       "role": "admin",
-      "email": "",
-      "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "name": "邱邱邱",
+      "avatar": "/images/avatar/1758076744670-avatar.jpg",
+      "email": "899999399@qq.com",
+      "phone": "13333333333",
+      "bio": "我很聪明,我真的很聪明聪明聪明呢。"
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "5",
@@ -48,7 +52,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "6",
@@ -58,7 +63,8 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "7",
@@ -68,7 +74,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "8",
@@ -78,7 +85,8 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "9",
@@ -88,7 +96,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "10",
@@ -98,7 +107,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "11",
@@ -108,7 +118,8 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "12",
@@ -118,7 +129,8 @@
       "role": "admin",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "13",
@@ -128,7 +140,8 @@
       "role": "editor",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "14",
@@ -138,7 +151,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     },
     {
       "id": "15",
@@ -148,7 +162,8 @@
       "role": "user",
       "email": "",
       "phone": "",
-      "avatar": "/images/default-avatar.png"
+      "avatar": "/images/default-avatar.png",
+      "bio": ""
     }
   ],
   "articles": [
